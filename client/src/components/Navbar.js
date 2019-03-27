@@ -1,6 +1,7 @@
 import React from 'react'
 import { AuthConsumer, } from "../providers/AuthProvider";
 import { Menu, } from 'semantic-ui-react'
+import { Icon, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
 
 class Navbar extends React.Component {
@@ -12,9 +13,10 @@ class Navbar extends React.Component {
       return (
         <Menu.Menu position='right'>
           <Menu.Item
-            name='logout'
             onClick={ () => handleLogout(this.props.history) }
-          />
+          >
+            <Icon name='user outline' />
+          </Menu.Item>
         </Menu.Menu>
       )
     } else {
@@ -36,13 +38,14 @@ class Navbar extends React.Component {
           </Link>
         </Menu.Menu>
       )
+      
     }
   }
   
   render() {
     return (
       <div>
-        <Menu pointing secondary>
+        <Menu pointing>
           <Link to='/'>
             <Menu.Item
               name='home'

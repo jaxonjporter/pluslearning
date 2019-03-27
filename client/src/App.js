@@ -6,6 +6,7 @@ import NoMatch from './components/NoMatch'
 import Login from './components/Login'
 import Register from './components/Register'
 import FetchUser from './components/FetchUser'
+import ProtectedRoute from './components/ProtectedRoute'
 import './App.css';
 
 class App extends Component {
@@ -15,7 +16,7 @@ class App extends Component {
       <Navbar />
       <FetchUser>
       <Switch>
-        <Route exact path='/' component={Home} />
+        <ProtectedRoute exact path='/' component={Home} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route component={NoMatch} />
