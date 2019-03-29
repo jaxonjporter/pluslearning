@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :friendships, only: [:index, :create, :destroy]
+    get 'all_friendships', to: 'friendships#all_friendships'
   end
 end

@@ -13,6 +13,16 @@ class Home extends React.Component {
       this.setState({ friends: res.data, })
     })
   }
+
+  addFriend = (id) => {
+    const friend = { user_id:this.props.auth.user.id, friend_id: id}
+    debugger
+    axios.post(`/api/friendships/`, friend)
+      .then( res => {
+        debugger
+        
+      }).catch( res => {debugger})
+  }
   
   
 
@@ -32,8 +42,13 @@ class Home extends React.Component {
                 {friend.first_name} {friend.last_name} 
               </Card.Header>
             </Card.Content>
-            <Card.Content extra>
+            <Card.Content>
               {friend.email}
+            </Card.Content>
+            <Card.Content extra>
+              <Button color='blue' onClick={ () => this.addFriend(friend.id)}>
+                Add Friend
+              </Button>
             </Card.Content>
           </Card>)
       })
