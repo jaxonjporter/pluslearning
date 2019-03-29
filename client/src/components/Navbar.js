@@ -44,18 +44,39 @@ class Navbar extends React.Component {
       
     }
   }
+
+  leftNavItems = () => {
+    const { auth: { user, handleLogout, }, location, } = this.props;
+    if (user)
+      return (
+      <>
+        <Link to='/'>
+          <Menu.Item
+            name='profile'
+            id='profile'
+            active={this.props.location.pathname === '/'}
+          />
+        </Link>
+        <Link to='/people'>
+          <Menu.Item
+            name='people'
+            id='people'
+            active={this.props.location.pathname === '/people'}
+          />
+        </Link>
+      </>
+      )
+    else 
+      return (
+        <Menu.Item>Welcome to Ghetto Space</Menu.Item>
+      )
+  }
   
   render() {
     return (
       <div>
         <Menu pointing>
-          <Link to='/'>
-            <Menu.Item
-              name='home'
-              id='home'
-              active={this.props.location.pathname === '/'}
-            />
-          </Link>
+            {this.leftNavItems() }
             { this.rightNavItems() }
         </Menu>
       </div>

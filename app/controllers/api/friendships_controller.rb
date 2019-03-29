@@ -1,4 +1,11 @@
 class Api::FriendshipsController < ApplicationController
+
+
+  def index
+    @users = User.all_users
+    render json: @users
+  end
+  
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     if @friendship.save

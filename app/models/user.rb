@@ -10,4 +10,11 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :friends, :through => :friendships
 
+  def self.all_users
+    User.find_by_sql(
+      "SELECT *
+      FROM users"
+    )
+  end
+
 end
