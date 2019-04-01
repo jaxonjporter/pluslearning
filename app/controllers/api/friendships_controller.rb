@@ -7,9 +7,8 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def all_friendships
-    @user = User.find(params[:user_id])
-    @friendships = @user.friendships.all_users
-    render json: @friendships
+    @friends = current_user.friends
+    render json: @friends
   end
   
   def create
@@ -29,6 +28,7 @@ class Api::FriendshipsController < ApplicationController
   end
 
   private
+
 
   def friendship_params
     params.require(:friendship).permit(:user_id, :friend_id)

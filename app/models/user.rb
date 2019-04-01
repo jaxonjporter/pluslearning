@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :friendships
-  has_many :friends, :through => :friendships
+  has_many :friends, through: :friendships
 
   def self.all_users
     User.find_by_sql(
