@@ -16,7 +16,6 @@ class Api::FriendshipsController < ApplicationController
     if @friendship.save
       render json: @friendship
     else
-      binding.pry
     end
     
   end
